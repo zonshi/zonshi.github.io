@@ -1,18 +1,6 @@
-
-.left {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 33.3333333%;
-  max-width: 432px;
-  background-image: url('../image/bg.jpeg');
-}
-
-@media only screen and (max-width: 720px) {
-  .left {
-    height: 204px;
-    width: 100%;
-    max-width: none;
-  }
+aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30%;
 }
