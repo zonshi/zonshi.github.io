@@ -328,7 +328,3 @@ a:after {
 .carousel-indicators .active {
 	background-color: #999999;
 }
-
-#carousel-example-generic {
-	min-height: 800px;
-}
