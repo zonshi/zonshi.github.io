@@ -38,7 +38,7 @@ p {
 
 /* Links */
 a {
-    color: #f85c37;
+    color: #e60000;
     word-wrap: break-word;
 
     -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
@@ -200,7 +200,7 @@ a:after {
 }
 
 .menu h1.logo a:hover {
-	color: #f85c37;
+	color: #f2f2f2;
 }
 
 .menu img.logo {
