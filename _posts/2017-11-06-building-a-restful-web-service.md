@@ -35,7 +35,7 @@ tags: spring
 ### 如何完成本指南
 
 像大多数Spring[入门指南](https://spring.io/guides)一样，您可以从头开始去完成每个步骤，也可以跳过已经熟悉的基本设置步骤。 无论哪种方式，您最终会得到可以正常工作的代码。
-**如果您选择从头开始**，就去看章节“[用Gradle构建](#用Gradle构建)”或“[用maven构建](#用maven构建)”。
+**如果您选择从头开始**，就去看章节“[用Gradle构建](#用gradle构建)”或“[用maven构建](#用maven构建)”。
 **如果您要跳过这些基础设置**，请执行以下操作：
 * [下载](https://github.com/spring-guides/gs-rest-service/archive/master.zip)并解压缩本指南的源代码库，或使用[Git](https://spring.io/understanding/Git)克隆它：
 `git clone https://github.com/spring-guides/gs-rest-service.git`
