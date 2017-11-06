@@ -7,7 +7,7 @@ tags: spring&nbsp;boot Restful
 
 本指南将引导您使用Spring创建一个REST风格的“Hello World”Web服务。
 
-### 您将要构建的东西
+## 您将要构建的东西
 
 您将构建一个接受HTTP GET请求的服务：
 `http://localhost:8080/greeting`
@@ -22,7 +22,7 @@ tags: spring&nbsp;boot Restful
 {"id":1,"content":"Hello, User!"}
 ~~~
   <!--more-->
-### 您需要的东西
+## 您需要的东西
 
 * 大约15分钟
 * 一个您最喜欢的文本编辑器或IDE
@@ -32,17 +32,17 @@ tags: spring&nbsp;boot Restful
   * [Spring Tool Suite (STS)](https://spring.io/guides/gs/sts)
   * [IntelliJ IDEA](https://spring.io/guides/gs/intellij-idea/)
 
-### 如何完成本指南
+## 如何完成本指南
 
 像大多数Spring[入门指南](https://spring.io/guides)一样，您可以从头开始去完成每个步骤，也可以跳过已经熟悉的基本设置步骤。 无论哪种方式，您最终会得到可以正常工作的代码。
 **如果您选择从头开始**，就去看章节“[用Gradle构建](#用gradle构建)”或“[用maven构建](#用maven构建)”。
 **如果您要跳过这些基础设置**，请执行以下操作：
 * [下载](https://github.com/spring-guides/gs-rest-service/archive/master.zip)并解压缩本指南的源代码库，或使用[Git](https://spring.io/understanding/Git)克隆它：
-`git clone https://github.com/spring-guides/gs-rest-service.git`
+  `git clone https://github.com/spring-guides/gs-rest-service.git`
 * 通过`cd`命令进入`gs-rest-service/initial` 目录
 * 然后去阅读章节“[创建资源表示类](#创建一个资源表示类)”。
 
-**当您完成了这个指南后**，可以使用gs-rest-service/complete中的代码检查您构建的代码。
+**当您完成了这个指南后**，可以使用`gs-rest-service/complete`中的代码检查您构建的代码。
 
 ## 用Gradle构建
 
@@ -60,8 +60,10 @@ tags: spring&nbsp;boot Restful
 
 创建一个Gradle构建文件
 下面是[最初的Gradle构建文件](https://github.com/spring-guides/gs-rest-service/blob/master/initial/build.gradle)。
+
 `build.gradle`
-~~~
+
+~~~text
 buildscript {
     repositories {
         mavenCentral()
@@ -304,8 +306,8 @@ java -jar build/libs/gs-rest-service-0.1.0.jar
 java -jar target/gs-rest-service-0.1.0.jar
 ~~~
 
-> 上面的过程将创建一个可运行的JAR。 您也可以选择构建一个经典的WAR文件。
- 
+> 上面的过程将创建一个可运行的JAR。 您也可以选择[构建一个经典的WAR文件](http://spring.io/guides/gs/convert-jar-to-war/)。
+
 日志记录输出显示。 该服务应该在几秒钟内启动并运行。
 
 ## 测试服务
