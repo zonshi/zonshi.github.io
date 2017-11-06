@@ -7,16 +7,13 @@
     </div>
     <nav>
         <ul class="inline-list">
-            <li><a href="{{ "/" | prepend: site.baseurl | replace: '//', '/' }}">Home</a></li>
+            <li><a href="{{ "/" | prepend: site.baseurl | replace: '//', '/' }}">主页</a></li>
             <li><a
-                href="{{ "/all.html" | prepend: site.baseurl | append: "?tag=" | replace: '//', '/'}}">All
+                href="{{ "/all.html" | prepend: site.baseurl | append: "?tag=" | replace: '//', '/'}}">全部文章
             </a></li>
             {% for list in site.nav_lists %}
                 <li><a href="{{ list.url }}"> {{ list.title }} </a></li>
             {% endfor %}
-            <li><a type="application/rss+xml"
-                href="{{ "/feed.xml" | prepend: site.baseurl | replace: '//', '/'}}">RSS
-            </a></li>
         </ul>
     </nav>
 </header>
