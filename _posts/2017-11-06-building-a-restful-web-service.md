@@ -2,7 +2,7 @@
 layout: post
 title: 构建一个REST风格的Web服务
 key: 20171106
-tags: "spring boot"
+tags: spring
 ---
 
 本指南将引导您使用Spring创建一个REST风格的“Hello World”Web服务。
