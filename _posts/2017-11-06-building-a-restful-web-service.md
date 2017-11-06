@@ -31,6 +31,7 @@ tags: spring
 * 您也可以直接将代码导入到这些IDE中：
   * [Spring Tool Suite (STS)](https://spring.io/guides/gs/sts)
   * [IntelliJ IDEA](https://spring.io/guides/gs/intellij-idea/)
+  <!--more-->
 
 ### 如何完成本指南
 
