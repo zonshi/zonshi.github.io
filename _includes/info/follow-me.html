@@ -38,6 +38,15 @@
                 </div>
             </li>
         {% endif %}
+        {% if site.author.gitee %}
+            <li title="Follow me on Github.">
+                <div class="round-button github">
+                    <a itemprop="sameAs" href="{{ site.author.gitee }}" target="_blank">
+                        <div class="icon">{% include icon/social/github.svg %}</div>
+                    </a>
+                </div>
+            </li>
+        {% endif %}
         {% if site.author.github %}
             <li title="Follow me on Github.">
                 <div class="round-button github">
