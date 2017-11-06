@@ -6,7 +6,9 @@ tags: spring
 ---
 
 本指南将引导您使用Spring创建一个REST风格的“Hello World”Web服务。
+
 ### 您将要构建的东西
+
 您将构建一个接受HTTP GET请求的服务：
 `http://localhost:8080/greeting`
 然后响应JSON格式的问候信息：
@@ -19,7 +21,9 @@ tags: spring
 ~~~text
 {"id":1,"content":"Hello, User!"}
 ~~~
+
 ### 您需要的东西
+
 * 大约15分钟
 * 一个您最喜欢的文本编辑器或IDE
 * [JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) or later
@@ -27,7 +31,9 @@ tags: spring
 * 您也可以直接将代码导入到这些IDE中：
   * [Spring Tool Suite (STS)](https://spring.io/guides/gs/sts)
   * [IntelliJ IDEA](https://spring.io/guides/gs/intellij-idea/)
+
 ### 如何完成本指南
+
 像大多数Spring[入门指南](https://spring.io/guides)一样，您可以从头开始去完成每个步骤，也可以跳过已经熟悉的基本设置步骤。 无论哪种方式，您最终会得到可以正常工作的代码。
 **如果您选择从头开始**，就去看章节“[用Gradle构建](用Gradle构建.md)”或“[用maven构建](用maven构建.md)”。
 **如果您要跳过这些基础设置**，请执行以下操作：
@@ -41,7 +47,9 @@ tags: spring
 ## 用Gradle构建
 
 首先您得建立一个基本的构建脚本。 在使用Spring构建应用程序时，您可以使用任何构建系统，您需要使用到的[Gradle](http://gradle.org/)和[Maven](https://maven.apache.org/)的代码我都写在文档里了。 如果您不熟悉这两个构建系统，请参阅[使用Gradle构建Java项目](https://spring.io/guides/gs/gradle)或[使用Maven构建Java项目](https://spring.io/guides/gs/maven)。
+
 ### 创建目录结构
+
 在您选择的项目目录下，创建以下子目录结构; 例如，您可以在类Unix系统上使用命令`mkdir -p src/main/java/hello`来创建目录：
 ~~~text
 └── src
@@ -49,6 +57,7 @@ tags: spring
         └── java
             └── hello
 ~~~
+
 创建一个Gradle构建文件
 下面是[最初的Gradle构建文件](https://github.com/spring-guides/gs-rest-service/blob/master/initial/build.gradle)。
 `build.gradle`
@@ -90,8 +99,11 @@ dependencies {
 * 它提供了一个内置的依赖解析器，设置了版本号以匹配Spring Boot的依赖关系。 你可以用任何你想要的版本覆盖，否则它会默认使用Boot选择的版本。
 
 ## 用maven构建
+
 首先您得建立一个基本的构建脚本。 在使用Spring构建应用程序时，您可以使用任何构建系统，[Maven](https://maven.apache.org/)的代码我都写在文档里了。 如果您不熟悉这个构建系统，[使用Maven构建Java项目](https://spring.io/guides/gs/maven)。
+
 ### 创建目录结构
+
 在您选择的项目目录下，创建以下子目录结构; 例如，您可以在类Unix系统上使用命令`mkdir -p src/main/java/hello`来创建目录：
 ~~~text
 └── src
@@ -167,14 +179,16 @@ dependencies {
 * 它提供了一个内置的依赖解析器，设置了版本号以匹配Spring Boot的依赖关系。 你可以用任何你想要的版本覆盖，否则它会默认使用Boot选择的版本。
 
 ## 用你的IDE构建
+
 * 阅读如何将本指南的代码直接导入到[Spring Tool Suite](https://spring.io/guides/gs/sts/)中。
 * 阅读如何在[IntelliJ IDEA](https://spring.io/guides/gs/intellij-idea)中使用本指南。
 
 ## 创建一个资源表示类
+
 现在你已经建立了项目和构建系统，然后就可以开始创建你的Web服务了。
 在开始动手前，先考虑一下服务的交互过程。
 该服务将处理`/greeting`的GET请求，查询字符串（query string）中的`name`参数是可选的。`GET`请求应该返回一个状态码为`200 OK`且响应体（body）为`JSON`格式的响应结果。 它应该看起来像这样：
-~~~
+~~~json
 {
     "id": 1,
     "content": "Hello, World!"
@@ -183,7 +197,7 @@ dependencies {
 `id`字段是问候信息的唯一标识符，content是问候信息的文字内容。
 为了给问候信息建模，您可以创建一个资源表示类。 为`id`和`content`数据提供一个普通的java对象，包含字段，构造函数和访问器：
 `src/main/java/hello/Greeting.java`
-~~~
+~~~java
 package hello;
 
 public class Greeting {
@@ -210,9 +224,10 @@ public class Greeting {
 接下来，你需要创建一个提供这些问候的资源控制器。
 
 ## 创建一个资源控制器
+
 在Spring构建REST风格的Web服务的方法中，HTTP请求由控制器处理。 这些组件可以通过[`@RestController`](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/bind/annotation/RestController.html)批注轻松识别，下面的`GreetingController`通过返回`Greeting`类的新实例来处理`/greeting`的`GET`请求：
 `src/main/java/hello/GreetingController.java`
-~~~
+~~~java
 package hello;
 
 import java.util.concurrent.atomic.AtomicLong;
@@ -247,9 +262,11 @@ public class GreetingController {
 这段代码使用了Spring 4的新的`@RestController`注解，它将类标记为一个控制器，其中每个方法都返回一个域对象（domain object）而不是一个视图（view）。这是`@Controller`和`@ResponseBody`的缩写。
 
 `Greeting`对象必须转换为JSON。由于Spring的HTTP消息转换器支持，您不需要手动执行此转换。由于[Jackson 2](http://wiki.fasterxml.com/JacksonHome)在类路径（classpath）上，所以自动选择Spring的`MappingJackson2HttpMessageConverte`r将`Greeting`实例转换为JSON。
+
 ## 使应用程序可执行
+
 尽管可以将此服务作为传统WAR文件打包以部署到外部应用程序服务器，但下面演示的更简单的方法创建了独立的应用程序。 你把所有东西都封装在一个单独的，可执行的JAR文件中，由一个好的旧的Java `main()`方法驱动。 一路上，您使用Spring的支持来将Tomcat servlet容器作为HTTP运行时嵌入，而不是部署到外部实例。
-~~~
+~~~text
 src/main/java/hello/Application.java
 ~~~
 ~~~java
@@ -275,21 +292,24 @@ public class Application {
 `main()`方法使用Spring Boot的`SpringApplication.run()`方法启动应用程序。 你有没有注意这里到没有一行XML？ 也没有web.xml文件。 这个Web应用程序是100％纯Java，您不必处理配置任何管道或基础设施。
 
 ### 构建一个可执行的JAR
+
 您可以使用Gradle或Maven从命令行运行应用程序。 或者，您可以构建一个包含所有必需的依赖项，类和资源的可执行JAR文件，然后运行该文件。 这使得在整个开发生命周期内将服务作为应用程序发布，版本化、部署和跨越不同的环境等等，变得容易。
 
 如果您正在使用Gradle，则可以使用`./gradlew bootRun`运行该应用程序。 或者您可以使用`./gradlew build`生成JAR文件。 然后你可以运行JAR文件：
-~~~
+~~~text
 java -jar build/libs/gs-rest-service-0.1.0.jar
 ~~~
 如果您正在使用Maven，则可以使用`./mvnw spring-boot：run`来运行该应用程序。 或者你也可以使用`./mvnw clean package`建立JAR文件。 然后你可以运行JAR文件：
-~~~
+~~~text
 java -jar target/gs-rest-service-0.1.0.jar
 ~~~
 
 > 上面的过程将创建一个可运行的JAR。 您也可以选择构建一个经典的WAR文件。
  
 日志记录输出显示。 该服务应该在几秒钟内启动并运行。
+
 ## 测试服务
+
 现在服务已经启动，请访问[http://localhost:8080/greeting](http://localhost:8080/greeting)，在这里您可以看到：
 ~~~json
 {"id":1,"content":"Hello, World!"}
@@ -301,9 +321,13 @@ java -jar target/gs-rest-service-0.1.0.jar
 这个改变演示了`GreetingControlle`r中的`@RequestParam`安排按预期工作了。 `name`参数的默认值是“World”，但可以通过查询字符串（query string）显式覆盖。
 
 还要注意`id`属性是如何从`1`改变为`2`。这证明你正在多个请求中的同一个`GreetingController`实例中起作用，并且它的`counter`字段在每个调用中按照预期递增。
+
 ## 概要
+
 恭喜！ 您刚刚用Spring开发了一个REST风格的Web服务。
+
 ## 其他内容
+
 以下指南也可能有所帮助：
 
 * [Accessing GemFire Data with REST](https://spring.io/guides/gs/accessing-gemfire-data-rest/)
