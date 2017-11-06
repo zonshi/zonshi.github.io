@@ -1,6 +1,6 @@
 ---
 layout: blog-default
-title: Blog
+title: 博客
 ---
 <div class="m-home">
     <div class="main">
@@ -17,7 +17,7 @@ title: Blog
                             {{ post.excerpt | strip_html | truncate: 350 }}
                         {% endif %}
                     </div>
-                    <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">Click to read more ...</a>
+                    <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">阅读全文 ...</a>
                     {% include blog/article-data.html %}
                 </article>
             {% endfor %}
