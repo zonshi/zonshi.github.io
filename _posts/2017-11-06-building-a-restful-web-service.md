@@ -5,7 +5,6 @@ key: 20171106
 tags: spring
 ---
 
-# 构建一个REST风格的Web服务
 本指南将引导您使用Spring创建一个REST风格的“Hello World”Web服务。
 ### 您将要构建的东西
 您将构建一个接受HTTP GET请求的服务：
